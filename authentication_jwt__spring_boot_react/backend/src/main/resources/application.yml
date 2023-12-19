@@ -1,0 +1,18 @@
+#security.jwt.token.secret-key: my-secret-key
+
+spring:
+  datasource:
+    platform: postgres
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/backend_jwt
+    username: postgres
+    password: postgres
+    initialization-mode: always // Will initialize the database's schema, for testing propose will use it.
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
+    hibernate:
+      ddl-auto: create
+
+configuration:
+  reactHost: http://localhost:3000
