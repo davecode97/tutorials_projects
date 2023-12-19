@@ -13,6 +13,5 @@ spring:
     show-sql: false
     hibernate:
       ddl-auto: create
-
 configuration:
   reactHost: http://localhost:3000
