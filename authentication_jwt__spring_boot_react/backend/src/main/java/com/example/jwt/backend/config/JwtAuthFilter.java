@@ -12,10 +12,12 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 
 @RequiredArgsConstructor
-public class JwTAuthFilter extends OncePerRequestFilter {
+public class JwtAuthFilter extends OncePerRequestFilter {
 
     private final UserAuthProvider userAuthProvider;
 
+    // With the below overriding method, spring security will automatically invoke `OncePerRequestFilter` on child class `JwtAuthFilter`
+    // so the default login will be skipped and the below doFilterInternal that filter the token, will be executed.
     @Override
     protected void doFilterInternal(
             HttpServletRequest request,

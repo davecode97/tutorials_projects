@@ -21,9 +21,9 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
         httpSecurity.exceptionHandling().authenticationEntryPoint(userAuthenticationEntryPoint)
                 .and()
-                .addFilterBefore(new JwTAuthFilter(userAuthProvider), BasicAuthenticationFilter.class)
+                .addFilterBefore(new JwtAuthFilter(userAuthProvider), BasicAuthenticationFilter.class)
                 .csrf().disable()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // no session and cookie will be create
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // no session and cookie won't be created
                 .and()
                 .authorizeHttpRequests(requests -> requests
                         .requestMatchers(HttpMethod.POST, "/login", "/register").permitAll() // only this two endpoint will not require authentication to consult.
