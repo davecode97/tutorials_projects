@@ -16,8 +16,10 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
     private final UserAuthProvider userAuthProvider;
 
-    // With the below overriding method, spring security will automatically invoke `OncePerRequestFilter` on child class `JwtAuthFilter`
+    // Before to reach out the controller of the authentication "login" , "registry",
+    // The below overriding method, spring security will automatically invoke `OncePerRequestFilter` on child class `JwtAuthFilter`
     // so the default login will be skipped and the below doFilterInternal that filter the token, will be executed.
+    // and after that, the controller for "login", or "registry" will be executed as well.
     @Override
     protected void doFilterInternal(
             HttpServletRequest request,
